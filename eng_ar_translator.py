@@ -1,7 +1,6 @@
 import docx
 import PyPDF2
 from translate import Translator
-import requests
 from docx2pdf import convert
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 import streamlit as st
@@ -163,22 +162,24 @@ if uploaded_file is not None:
             st.success('file Uploaded')
             file_details = {"filename": uploaded_file.name, "filetype": uploaded_file.type,
                             "filesize": uploaded_file.size}
-            st.write(file_details)
+#             st.write(file_details)
 
             if uploaded_file.type == "text/plain":
                 # Read as string (decode bytes to string)
                 raw_text = str(uploaded_file.read(), "utf-8")
-                st.text(raw_text)
-                # trans_text = translator_and_converter(raw_text)
+#                 st.text(raw_text)
+                trans_text = trans(raw_text)
+                write_file(trans_text)
+                st.write('Complete')
 
 
             elif uploaded_file.type == "application/pdf":
                 try:
                     raw_text = readpdf(uploaded_file)
-                    st.write(type(raw_text))
+#                     st.write(type(raw_text))
 
                     trans_text = trans(raw_text)
-                    st.write(trans_text)
+#                     st.write(trans_text)
                     write_file(trans_text)
                     st.write('Complete')
 
@@ -189,11 +190,11 @@ if uploaded_file is not None:
             else:
 
                 raw_text = readtxt(uploaded_file)
-                st.write(raw_text)
-                st.write(type(raw_text))
+#                 st.write(raw_text)
+#                 st.write(type(raw_text))
 
                 trans_text = trans(raw_text)
-                st.write(trans_text)
+#                 st.write(trans_text)
                 write_file(trans_text)
                 st.write('Complete')
 
