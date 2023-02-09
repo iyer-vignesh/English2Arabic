@@ -5,9 +5,9 @@ from docx2pdf import convert
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 import streamlit as st
 
-import pythoncom
+# import pythoncom
 
-pythoncom.CoInitialize()
+# pythoncom.CoInitialize()
 
 st.write("""
 # Language Translation App
