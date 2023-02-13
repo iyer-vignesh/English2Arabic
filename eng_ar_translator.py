@@ -113,7 +113,7 @@ def trans(text):
 
     return corpus
 
-@st.experimental_memo
+#@st.experimental_memo
 
 def write_file(text):
     global trans_file
@@ -201,8 +201,8 @@ if uploaded_file is not None:
                 write_file(trans_text)
                 st.write('Complete')
 
-            #with open("Translated_file.pdf", "rb") as pdf_file:
-            with open(trans_file, "rb") as pdf_file:
+            with open("Translated_file.pdf", "rb") as pdf_file:
+            #with open(trans_file, "rb") as pdf_file:
                 PDFbyte = pdf_file.read()
 
             uploaded_file_name = uploaded_file.name.split('.')[0]
