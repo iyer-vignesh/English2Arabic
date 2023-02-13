@@ -113,7 +113,8 @@ def trans(text):
 
     return corpus
 
-@st.cache_data
+@st.experimental_memo
+
 def write_file(text):
     trans_text = []
     translated_file = 'Translated_file.docx'
